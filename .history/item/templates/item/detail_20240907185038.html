@@ -1,0 +1,58 @@
+{% extends "core/base.html" %}
+
+{% block title %} {{ item.name }} {% endblock title %}
+
+{% block content %}
+<!-- Item Detail Section -->
+<div class="grid grid-cols-5 gap-8"> 
+    <div class="col-span-3">
+        <img src="{{ item.image.url }}" class="rounded-xl shadow-lg">
+    </div>
+
+    <div class="col-span-2 p-6 bg-white rounded-xl shadow-md">
+        <h1 class="mb-6 text-4xl font-bold text-gray-900">{{ item.name }}</h1>
+        <p class="text-gray-700 text-lg"><strong>Price: </strong>{{ item.price }}</p>
+        <p class="text-gray-700 text-lg"><strong>Seller: </strong>{{ item.created_by.username }}</p>
+        
+        {% if item.description %}
+            <p class="text-gray-800 text-lg mt-4">
+                <strong class="text-gray-600">Description: </strong><br>
+                {{ item.description }}
+            </p>
+        {% endif %}
+
+        {% if request.user == item.created_by %}
+            <div class="mt-8 p-6 bg-white rounded-xl shadow-md">
+                <p class="text-gray-800 text-lg">This is your item!</p>
+
+                <a href="{% url 'item:edit' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-600 text-white rounded-xl transition-colors duration-300 hover:bg-teal-700">Edit</a>
+                <a href="{% url 'item:delete' item.id %}" class="inline-block mt-4 px-6 py-3 text-lg font-semibold bg-red-600 text-white rounded-xl transition-colors duration-300 hover:bg-red-700">Delete</a>
+            </div>
+        {% else %}
+            <a href="{% url 'conversation:new' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-600 text-white rounded-xl transition-colors duration-300 hover:bg-teal-700">Contact seller</a>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Related Items Section -->
+<div class="mt-12 px-6 py-12 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl">
+    <h2 class="mb-12 text-3xl font-bold text-center text-gray-800">Related Items</h2>
+
+    <div class="grid grid-cols-3 gap-6">
+        {% for item in related_items %}
+            <div class="transition-transform transform hover:scale-105">
+                <a href="{% url 'item:detail' item.id %}">
+                    <div>
+                        <img src="{{ item.image.url }}" class="rounded-t-xl shadow-md"> 
+                    </div>
+
+                    <div class="p-6 bg-white rounded-b-xl shadow-sm">
+                        <h2 class="text-xl font-semibold text-gray-800">{{ item.name }}</h2>
+                        <p class="text-gray-600">Price: {{ item.price }}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

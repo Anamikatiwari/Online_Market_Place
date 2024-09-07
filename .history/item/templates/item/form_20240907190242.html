@@ -1,0 +1,68 @@
+{% extends "core/base.html" %}
+
+{% block title %} {{ title }} {% endblock title %}
+
+{% block content %}
+<h1 class="mb-6 text-3xl">{{ title }}</h1>
+
+<form method="post" action="." enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="space-y-4">
+        {{ form.as_p }}
+    </div>
+
+    {% if form.errors or form.non_field_errors %}
+    <div class="mb-3 p-6 bg-red-100 rounded-xl">
+        {% for field in form  %}
+            {{ field.errors }}
+        {% endfor %}
+
+        {{ form.non_field_errors }}
+    </div>
+    {% endif %}
+
+    <button class="mt--6 py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit</button>
+</form>
+{% endblock content %}{% extends "core/base.html" %}
+
+{% block title %} {{ title }} {% endblock title %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-6 py-8">
+    <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 mb-8">{{ title }}</h1>
+
+    <form method="post" action="." enctype="multipart/form-data" class="bg-white p-8 rounded-xl shadow-xl border border-gray-300 transition-transform transform hover:scale-105 hover:shadow-2xl">
+        {% csrf_token %}
+        
+        <div class="space-y-6">
+            {{ form.as_p }}
+
+            {% if form.errors or form.non_field_errors %}
+            <div class="mb-6 p-4 bg-red-50 text-red-800 border border-red-300 rounded-lg shadow-lg">
+                {% for field in form %}
+                    {% if field.errors %}
+                        <div class="mb-3">
+                            <strong class="block text-red-600">{{ field.label }}:</strong>
+                            {% for error in field.errors %}
+                                <p class="text-sm">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                
+                {% if form.non_field_errors %}
+                    <div>
+                        <strong class="block text-red-600">Errors:</strong>
+                        {% for error in form.non_field_errors %}
+                            <p class="text-sm">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="mt-6 py-3 px-6 text-lg font-bold bg-gradient-to-r from-teal-400 to-teal-600 text-white rounded-lg shadow-lg hover:from-teal-500 hover:to-teal-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-teal-300">Submit</button>
+    </form>
+</div>
+{% endblock content %}
