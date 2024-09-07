@@ -8,13 +8,8 @@
     <style>
         /* Gradient background for navbar */
         .navbar-gradient {
-            background: linear-gradient(135deg, #6e45e2, #88d3ce); /* Elegant purple to teal gradient */
-            border-radius: 0 0 20px 20px; /* More rounded corners at the bottom */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Softer and more pronounced shadow */
-            transition: background-color 0.3s ease; /* Smooth transition on hover */
-        }
-        .navbar-gradient:hover {
-            background: linear-gradient(135deg, #6e45e2, #a0c4c8); /* Slightly lighter gradient on hover */
+            background: linear-gradient(135deg, #ff6f61, #dce35b); /* Complementary orange to green gradient */
+            border-radius: 0 0 10px 10px; /* Rounded corners at the bottom */
         }
 
         /* Button hover effect */
@@ -22,54 +17,43 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
         }
         .btn-hover-effect:hover {
-            transform: scale(1.07); /* More noticeable scaling */
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Slightly stronger shadow */
             background-color: rgba(0, 0, 0, 0.05); /* Subtle background on hover */
         }
 
         /* Navbar link styling */
         .nav-link {
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-            transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
         .nav-link:hover {
-            color: #ffeb3b; /* Bright yellow for hover */
-            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7);
-            transform: translateY(-2px); /* Slight lift effect */
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+            color: #fff;
         }
 
         /* Footer Styling */
         .footer-bg {
-            background: linear-gradient(135deg, #1c1c1c, #4a4a4a); /* Darker gradient */
-            border-top: 3px solid #666; /* Thicker border for a more distinct separation */
+            background: linear-gradient(135deg, #1e3c72, #2a5298); /* Analogous blue to darker blue gradient */
+            border-top: 2px solid #fff; /* Top border to separate from content */
         }
         .footer-link {
-            color: #c1c1c1; /* Lighter gray color for links */
+            color: #e3f2fd; /* Light cyan color for links */
             transition: color 0.3s ease, text-shadow 0.3s ease;
         }
         .footer-link:hover {
-            color: #ffeb3b; /* Bright yellow on hover */
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Stronger shadow effect */
+            color: #bbdefb; /* Slightly darker cyan on hover */
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
         }
 
         .footer-section {
-            border-bottom: 1px solid #444; /* Border between sections */
-            padding-bottom: 1.5rem;
-            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #4a5568; /* Border between sections */
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
         }
 
         .footer-section:last-child {
             border-bottom: none;
-        }
-
-        /* Additional styling for the footer */
-        .footer-icon {
-            color: #c1c1c1;
-            margin-right: 0.5rem;
-            transition: color 0.3s ease;
-        }
-        .footer-icon:hover {
-            color: #ffeb3b;
         }
     </style>
 </head>

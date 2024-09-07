@@ -1,0 +1,38 @@
+{% extends "core/base.html" %}
+
+{% block title %}Log in{% endblock title %}
+
+{% block content %}
+    <div class="w-full max-w-md mx-auto my-6 p-8 bg-white shadow-lg rounded-xl">
+        <h1 class="mb-6 text-4xl font-bold text-gray-800 text-center">Log in</h1>
+
+        <form method="post" action="." class="space-y-6">
+            {% csrf_token %}
+
+            <!-- Username Field -->
+            <div class="space-y-2">
+                <label for="username" class="block text-lg font-medium text-gray-700">Username</label>
+                {{ form.username|add_class:"w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" }}
+            </div>
+
+            <!-- Password Field -->
+            <div class="space-y-2">
+                <label for="password" class="block text-lg font-medium text-gray-700">Password</label>
+                {{ form.password|add_class:"w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" }}
+            </div>
+
+            <!-- Error Messages -->
+            {% if form.errors or form.non_field_errors %}
+                <div class="p-4 bg-red-100 border border-red-300 text-red-800 rounded-lg">
+                    {% for field in form %}
+                        {{ field.errors }}
+                    {% endfor %}
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <!-- Submit Button -->
+            <button type="submit" class="w-full py-3 text-lg font-semibold bg-teal-500 hover:bg-teal-600 rounded-lg text-white transition duration-300">Log In</button>
+        </form>
+    </div>
+{% endblock content %}
